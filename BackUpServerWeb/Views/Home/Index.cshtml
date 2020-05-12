@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-12">
+       <div class="mb-3 mt-3">
+           <div class="mb-3">Upload File</div>
+
+           <div class="mb-3 form-group">
+               <div class="custom-file">
+                   <input type="file" class="custom-file-input" id="file_input" onchange="setName();" multiple/>
+                   <label for="file_input" class="custom-file-label" id="file_input_label">Select File</label>
+               </div>
+           </div>
+
+           <button type="button" class="btn btn-primary" onclick="Upload()" id="btn_upload">Upload</button>
+           <button type="button" class="btn btn-primary d-none" id="btn_uploading" disabled>
+               <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+               Uploading..
+           </button>
+           <button type="button" class="btn btn-secondary d-none" id="btn_cancel">Cancel</button>
+           <div id="progress_wrapper" class="d-none">
+               <label id="progress_status">50%</label>
+               <div class="progress mb-3">
+                   <div id="progress" class="progress-bar" role="progressbar"></div>
+               </div>
+           </div>
+           <div id="alert_wrapper" class="d-none mt-3"></div>
+
+       </div>
+    </div>
+</div>
+
+
+<script>
+    function setName() {
+        var file_input = document.getElementById("file_input");
+        var file_input_label = document.getElementById("file_input_label");
+
+        file_input_label.innerHTML = "";
+        for (var i = 0; i < file_input.files.length; i++) {
+            file_input_label.innerHTML += file_input.files[i].name + ", ";
+        }
+        
+
+    }
+
+    function Upload() {
+        //console.log("Upload");
+        
+        var btn_upload = document.getElementById("btn_upload");
+        var file_input = document.getElementById("file_input");
+        var btn_uploading = document.getElementById("btn_uploading");
+        var btn_cancel = document.getElementById("btn_cancel");
+        var progress_wrapper = document.getElementById("progress_wrapper");
+        var progress_status = document.getElementById("progress_status");
+        var progress = document.getElementById("progress");
+        var alert_wrapper = document.getElementById("alert_wrapper");
+
+        alert_wrapper.classList.add("d-none");
+
+        file_input.disabled = true;
+
+        btn_upload.classList.add("d-none");
+        btn_uploading.classList.remove("d-none");
+        btn_cancel.classList.remove("d-none");
+
+        progress_wrapper.classList.remove("d-none");
+
+        var request = new XMLHttpRequest();
+        request.responseType = "json";
+
+        var data = new FormData();
+
+        var file = file_input.files[0];
+        var filesize = file.size;
+
+        data.append("file", file);
+
+        request.upload.addEventListener("progress", function (e) {
+            var percentageCompleted = Math.floor((e.position / e.totalSize) * 100);
+            progress.style = `width:${percentageCompleted}%`;
+            progress_status.innerHTML = `${percentageCompleted}%`;
+            
+        });
+
+        request.addEventListener("load", function (e) {
+            if (request.status == 200) {
+                showAlert("File uploaded", "success");
+            } else {
+                showAlert("Potti", "error");
+            }
+            reset();
+
+        });
+
+        request.addEventListener("error", function (e) {
+            showAlert("Sherikkum Potti", "error");
+            reset();
+        });
+
+        request.addEventListener("abort", function (e) {
+            showAlert("User cancelled the upload", "warning");
+            reset();
+        });
+
+        btn_cancel.addEventListener("click", function () {
+            request.abort();
+        });
+
+        request.open("post", "/home/Upload");
+        request.send(data);
+    }
+
+    function reset() {
+        var btn_upload = document.getElementById("btn_upload");
+        var file_input = document.getElementById("file_input");
+        var btn_uploading = document.getElementById("btn_uploading");
+        var btn_cancel = document.getElementById("btn_cancel");
+        var progress_wrapper = document.getElementById("progress_wrapper");
+        var progress_status = document.getElementById("progress_status");
+        var progress = document.getElementById("progress");
+
+        file_input.value = null;
+        file_input.disabled = false;
+
+        btn_upload.classList.remove("d-none");
+        btn_uploading.classList.add("d-none");
+        btn_cancel.classList.add("d-none");
+        progress_wrapper.classList.add("d-none");
+
+        progress.style = `width:${0}%`;
+        progress_status.innerHTML = `${0}%`;
+
+    }
+
+    function showAlert(message, type) {
+        var alert_wrapper = document.getElementById("alert_wrapper");
+
+        alert_wrapper.classList.remove("d-none");
+
+        alert_wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+               ${message}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+               </button>
+           </div>`;
+    }
+</script>
