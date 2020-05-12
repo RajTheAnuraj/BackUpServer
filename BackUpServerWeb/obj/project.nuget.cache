@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "6F21iJ177uTt9yywGuFJdN+aqXUMSyGda3gHoIvaSNvJ/eOXMo0FUXa7+ebkGrNSS9psP9AtEeniddIMdyCigQ==",
+  "success": true,
+  "projectFilePath": "/Users/Anuraj/Documents/Programming/BackUpServer/BackUpServerWeb/BackUpServerWeb.csproj",
+  "expectedPackageFiles": [
+    "/Users/Anuraj/.nuget/packages/microsoft.aspnetcore.app.ref/3.0.1/microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

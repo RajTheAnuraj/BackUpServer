@@ -1,0 +1,10 @@
+﻿@{
+    List<FileDetail> fileDetails = ViewData["fileDetails"] as List<FileDetail>;
+
+    foreach (var fileDetail in fileDetails)
+    {
+        <div>
+            @Html.ActionLink(fileDetail.FileName, "GetFile", new { key = fileDetail.FileName })
+        </div>
+    }
+}

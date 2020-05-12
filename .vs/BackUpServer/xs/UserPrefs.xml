@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{D01A4BA8-860F-47D7-B1FD-44C1590ADC40}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BackUpServerWeb/Controllers/HomeController.cs">
+    <Files>
+      <File FileName="BackUpServerWeb/Views/Home/Index.cshtml" Line="25" Column="12" />
+      <File FileName="BackUpServerWeb/Controllers/HomeController.cs" Line="53" Column="1" />
+      <File FileName="BackUpServerWeb/Controllers/FileUploadController.cs" Line="10" Column="36" />
+      <File FileName="BackUpServerWeb/Views/FileList/Index.cshtml" Line="1" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BackUpServer" expanded="True">
+            <Node name="BackUpServerWeb" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="FileList" expanded="True" />
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.BackUpServerApiTests FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.BackUpServerWeb PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

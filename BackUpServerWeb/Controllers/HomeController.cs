@@ -25,18 +25,6 @@ namespace BackUpServerWeb.Controllers
 
         public IActionResult Index()
         {
-            string savePath = configuration.GetValue<string>("SavePath");
-            DirectoryInfo di = new DirectoryInfo(savePath);
-            var files = di.GetFiles();
-            List<FileDetail> fileDetails = new List<FileDetail>();
-            foreach(var file in files)
-            {
-                fileDetails.Add(
-                    new FileDetail { FileName = file.Name, FilePath = file.FullName }
-                    );
-            }
-
-            ViewData.Add("fileDetails", fileDetails);
             return View();
         }
 
@@ -45,19 +33,13 @@ namespace BackUpServerWeb.Controllers
         public IActionResult Upload(IFormFile file)
         {
             string path = configuration.GetValue<string>("SavePath");
-            string savePath = $"{path}/{file.FileName}";
+            string savePath = Path.Join(path,file.FileName);
             using var stream = System.IO.File.Create(savePath);
             file.CopyTo(stream);
             return View("Index");
         }
 
 
-        public IActionResult GetFile(string key)
-        {
-            string path = configuration.GetValue<string>("SavePath");
-            string savePath = $"{path}/{key}";
-            byte[] arr = System.IO.File.ReadAllBytes(savePath);
-            return File(arr, System.Net.Mime.MediaTypeNames.Application.Octet, key);
-        }
+        
     }
 }

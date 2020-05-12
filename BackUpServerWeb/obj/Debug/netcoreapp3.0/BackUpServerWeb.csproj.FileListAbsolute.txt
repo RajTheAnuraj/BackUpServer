@@ -30,5 +30,5 @@
 /Users/Anuraj/Documents/Programming/BackUpServer/BackUpServerWeb/obj/Debug/netcoreapp3.0/BackUpServerWeb.dll
 /Users/Anuraj/Documents/Programming/BackUpServer/BackUpServerWeb/obj/Debug/netcoreapp3.0/BackUpServerWeb.pdb
 /Users/Anuraj/Documents/Programming/BackUpServer/BackUpServerWeb/obj/Debug/netcoreapp3.0/BackUpServerWeb.csproj.CopyComplete
-/Users/Anuraj/Documents/Programming/BackUpServer/BackUpServerWeb/obj/Debug/netcoreapp3.0/Razor/Views/FileUpload/Index.cshtml.g.cs
 /Users/Anuraj/Documents/Programming/BackUpServer/BackUpServerWeb/obj/Debug/netcoreapp3.0/BackUpServerWeb.genruntimeconfig.cache
+/Users/Anuraj/Documents/Programming/BackUpServer/BackUpServerWeb/obj/Debug/netcoreapp3.0/Razor/Views/FileList/Index.cshtml.g.cs

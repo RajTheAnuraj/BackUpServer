@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\FileUpload\" />
+    <Folder Include="Views\FileList\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\ErrorViewModel.cs" />
